@@ -1,6 +1,6 @@
 # Spring Boot Demo
-- Spring Web MVC / Spring Data JPA / Spring Security / Spring Core / Spring Boot 등을 학습하기 위한, 코드를 작성하는 프로젝트.
-- 각 기술별 주요 코드들을 샘플로 참고할 수 있도록, commit id를 리스트업 하는것이 목적.
+- Spring Web MVC / Spring Data JPA / Spring Security / Spring Core / Spring Boot 등을 학습하기 위한, 코드를 작성하는 프로젝트
+- 각 기술별 주요 코드들을 샘플로 참고할 수 있도록, commit id를 리스트업 하는것이 목적
 
 # Index
 - [Specification](#specification)
@@ -34,9 +34,16 @@
 
 ## # spring-security
 ### Spec
-- TBD
+- DBMS
+  * RDB : H2 inmemory DB
+  * ORM : JPA
+- Security : Spring Security
+- Template Engine : Thymeleaf
+- Test
+   * spring-security-test
 ### Commit List
-- TBD
+- init project : a8ee4f23
+- TBD 
 
 ## # spring-web-mvc
 ### Spec

@@ -1,5 +1,6 @@
 rootProject.name = 'spring-boot-demo'
 
 include(
-        ':spring-security'
+        ':spring-security',
+        ':spring-web-mvc'
 )
