@@ -47,8 +47,13 @@
 
 ## # spring-web-mvc
 ### Spec
-- init module : 0ea6fa57
+- DBMS
+  * RDB : H2 inmemory DB
+  * ORM : JPA
+- Template Engine : Thymeleaf
+
 ### Commit List
+- init module : 0ea6fa57
 - TBD
 
 ## # spring-data-jpa
