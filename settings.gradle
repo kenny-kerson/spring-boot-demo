@@ -1,0 +1,5 @@
+rootProject.name = 'spring-boot-demo'
+
+include(
+        ':spring-security'
+)
