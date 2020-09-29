@@ -15,7 +15,7 @@
    * [spring-boot](#spring-boot)
 
 # Specification
-- 모든 모듈에서 공통적으로 사용하는 스펙
+( 모든 모듈에서 공통적으로 사용하는 스펙 )
 - Language : **Java**
 - JDK : **OpenJDK 11**
 - Framework : **Spring Boot 2.3.4**
