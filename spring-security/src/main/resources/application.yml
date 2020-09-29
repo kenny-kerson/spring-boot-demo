@@ -7,9 +7,12 @@ spring:
       enabled: true
   datasource:
     hikari:
+      # 디폴트 : 10
       maximum-pool-size: 10
-      minimum-idle: 0
-      connection-timeout: 10
+      # 디폴트 : 30000( 30초 )
+      connection-timeout: 10000
+      # 디폴트 : 180000( 30분 )
+      max-lifetime: 180000
 
 server:
   port: 8080
