@@ -19,6 +19,8 @@
 - Language : **Java**
 - JDK : **OpenJDK 11**
 - Framework : **Spring Boot 2.3.4**
+   * spring-core : 5.2.9
+   * spring-security-core : 5.3.4
 - External Library
    * lombok : getter, setter, constructor, builder 등 반복적인 코드 제거를 위해 사용 
 
