@@ -14,7 +14,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers("/", "/info", "/h2-console").permitAll()
+                .mvcMatchers("/", "/info", "/user/**", "/h2-console/**").permitAll()
                 .mvcMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
         http.formLogin();
@@ -28,10 +28,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
      *
      * => DAO 유저 추가 로직으로 인해 주석처리!!
      */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("kenny").password("{noop}1234").roles("USER").and()
-                .withUser("admin").password("{noop}!@#$").roles("ADMIN");
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("kenny").password("{noop}1234").roles("USER").and()
+//                .withUser("admin").password("{noop}!@#$").roles("ADMIN");
+//    }
 }

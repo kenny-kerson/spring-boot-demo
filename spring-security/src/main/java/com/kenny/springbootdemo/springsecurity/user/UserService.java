@@ -16,7 +16,7 @@ public class UserService implements UserDetailsService {
      * DAO로 유저 추가
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
         return org.springframework.security.core.userdetails.User.builder()
@@ -24,5 +24,13 @@ public class UserService implements UserDetailsService {
                 .roles(user.getRoles())
                 .password(user.getPassword())
                 .build();
+    }
+
+    /**
+     * User 추가 메서드
+     */
+    public User createUser( final User user ) {
+        user.encodePassword();
+        return userRepository.save(user);
     }
 }
