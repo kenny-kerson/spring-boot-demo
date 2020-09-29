@@ -46,12 +46,12 @@
 - Test
    * spring-security-test
 ### Commit List
-- init module : a8ee4f23
+- init module : `a8ee4f23`
 - 1.Form 인증
-   * 인메모리 유저 추가 : b4cb5eb7
-   * DAO 유저 추가 : 296f0985
-   * PasswordEncoder 적용( 디폴트 : BcryptPasswordEncoder ) : 91553216 
-   * 테스트코드 추가 : 919df97c 
+   * 인메모리 유저 추가 : `b4cb5eb7`
+   * DAO 유저 추가 : `296f0985`
+   * PasswordEncoder 적용( 디폴트 : BcryptPasswordEncoder ) : `91553216`
+   * 테스트코드 추가 : `919df97c`
 - 2.Spring Security 아키텍쳐
    * TBD 
 
