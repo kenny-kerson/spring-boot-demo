@@ -1,6 +1,8 @@
 # Spring Boot Demo
-- Spring Web MVC / Spring Data JPA / Spring Security / Spring Core / Spring Boot 등을 학습하기 위한, 코드를 작성하는 프로젝트
-- 각 기술별 주요 코드들을 샘플로 참고할 수 있도록, commit id를 리스트업 하는것이 목적
+- **개요**
+   * Spring **Web MVC** / Spring Data **JPA** / Spring **Security** / Spring **Core** / Spring Boot 등을 학습하기 위한, 코드를 작성하는 프로젝트
+- **목적**
+   * 각 기술별 주요 코드들을 샘플로 참고할 수 있도록, **commit id를 리스트업** 하는것이 목적
 
 # Index
 - [Specification](#specification)
@@ -14,15 +16,15 @@
 
 # Specification
 - 모든 모듈에서 공통적으로 사용하는 스펙
-- Language : Java
-- JDK : OpenJDK 11
-- Framework : Spring Boot 2.3.4
+- Language : **Java**
+- JDK : **OpenJDK 11**
+- Framework : **Spring Boot 2.3.4**
 - External Library
    * lombok : getter, setter, constructor, builder 등 반복적인 코드 제거를 위해 사용 
 
 # Project Structure
-1. 멀티 모듈 프로젝트로 구성
-2. 각 주요 주제별( WebMVC, Security 등 ) 코드를 하위 모듈로 구성
+1. **멀티 모듈** 프로젝트로 구성
+2. 각 **주요 주제별**( WebMVC, Security 등 ) 코드를 하위 모듈로 구성
 3. 모듈 리스트
     * spring-security
     * spring-web-mvc
@@ -35,10 +37,10 @@
 ## # spring-security
 ### Spec
 - DBMS
-  * RDB : H2 inmemory DB
-  * ORM : JPA
+  * RDB : **H2** inmemory DB
+  * ORM : **JPA**
 - Security : Spring Security
-- Template Engine : Thymeleaf
+- Template Engine : **Thymeleaf**
 - Test
    * spring-security-test
 ### Commit List
