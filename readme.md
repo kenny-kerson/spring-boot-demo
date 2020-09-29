@@ -47,7 +47,7 @@
 - init module : a8ee4f23
 - 1.Form 인증
    * 인메모리 유저 추가 : b4cb5eb7
-   * DAO 유저 추가 : TBD
+   * DAO 유저 추가 : 296f0985
    * PasswordEncoder 적용 : TBD 
    * 테스트코드 추가 : TBD
 
