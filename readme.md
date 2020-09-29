@@ -48,13 +48,15 @@
 - 1.Form 인증
    * 인메모리 유저 추가 : b4cb5eb7
    * DAO 유저 추가 : 296f0985
-   * PasswordEncoder 적용 : TBD 
+   * PasswordEncoder 적용( 디폴트 : BcryptPasswordEncoder ) : TBD 
    * 테스트코드 추가 : TBD
+- 2.Spring Security 아키텍쳐
+   * TBD 
 
 ## # spring-web-mvc
 ### Spec
 - DBMS
-  * RDB : H2 inmemory DB
+  * RDB : H2 in-memory DB
   * ORM : JPA
 - Template Engine : Thymeleaf
 

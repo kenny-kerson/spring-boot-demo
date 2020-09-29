@@ -1,9 +1,12 @@
 package com.kenny.springbootdemo.springsecurity.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -34,4 +37,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .withUser("kenny").password("{noop}1234").roles("USER").and()
 //                .withUser("admin").password("{noop}!@#$").roles("ADMIN");
 //    }
+
+    /**
+     * PasswordEncoder 빈 생성
+     * - 기본설정은, BCryptPasswordEncoder로 설정됨
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
 }

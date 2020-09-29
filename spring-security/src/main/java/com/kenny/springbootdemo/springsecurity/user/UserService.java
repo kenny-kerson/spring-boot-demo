@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * DAO로 유저 추가
@@ -30,7 +32,7 @@ public class UserService implements UserDetailsService {
      * User 추가 메서드
      */
     public User createUser( final User user ) {
-        user.encodePassword();
+        user.encodePassword(passwordEncoder);
         return userRepository.save(user);
     }
 }
