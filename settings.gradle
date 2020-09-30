@@ -2,5 +2,6 @@ rootProject.name = 'spring-boot-demo'
 
 include(
         ':spring-security',
+        ':spring-junit5-mockito-test',
         ':spring-web-mvc'
 )
