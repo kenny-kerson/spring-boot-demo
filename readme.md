@@ -64,7 +64,7 @@
 - init module : cdd37fa2
 - 1.JUnit5
    * 시작 & 테스트이름 표시 : `7f949d58`
-   * Assertion & AssertJ : 
+   * Assertion & AssertJ : `47a37934`
    * 조건에 따라 테스트실행 : 
    * 태깅과 필터링 : 
    * 커스텀 태그 : 
