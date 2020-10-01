@@ -63,7 +63,7 @@
 ### Commit List
 - init module : cdd37fa2
 - 1.JUnit5
-   * 시작 & 테스트이름 표시 :
+   * 시작 & 테스트이름 표시 : `7f949d58`
    * Assertion & AssertJ : 
    * 조건에 따라 테스트실행 : 
    * 태깅과 필터링 : 
