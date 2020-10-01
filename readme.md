@@ -63,10 +63,16 @@
 ### Commit List
 - init module : cdd37fa2
 - 1.JUnit5
-   * TBD
+   * 시작 & 테스트이름 표시 :
+   * Assertion & AssertJ : 
+   * 조건에 따라 테스트실행 : 
+   * 태깅과 필터링 : 
+   * 커스텀 태그 : 
+   * 테스트 반복하기() : 
+   * ✔️ 테스트 반복하기( @ParameterizedTest ) : 
 - 2.Mockito
    * TBD
-- 3. TBD
+- 3.TBD
 
 ## # spring-web-mvc
 ### Spec
