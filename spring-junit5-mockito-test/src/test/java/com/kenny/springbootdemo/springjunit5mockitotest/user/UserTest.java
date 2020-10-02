@@ -1,9 +1,17 @@
 package com.kenny.springbootdemo.springjunit5mockitotest.user;
 
+import org.assertj.core.api.Assumptions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
+import org.mockito.internal.matchers.Null;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assumptions.assumeThat;
+import static org.assertj.core.api.Assumptions.assumeThatCode;
 
 class UserTest {
 
@@ -124,6 +132,67 @@ class UserTest {
     @DisplayName("Assertion : Timeout 체크")
     void assertionTimeoutCheck() {
         // assertj에는 Timeout 체크기능을 별도로 없는듯?!
+    }
+
+    @Test
+    @DisplayName("Assumption : assumeThat()")
+    void assumption1() {
+        final String username = "kenny";
+        final User user = User.builder()
+                .id(1)
+                .username(username)
+                .roles("ADMIN")
+                .password("1234")
+                .isMale(Boolean.TRUE)
+                .build();
+
+        assumeThat(user.getIsMale()).isTrue();
+
+        assertThat(user.getId()).isEqualTo(1);
+        assertThat(user.getUsername()).isEqualTo(username);
+    }
+
+    @Test
+    @DisplayName("Assumption : assumeThatCode()")
+    void assumption2() {
+        final String username = "kenny";
+        final User user = User.builder()
+                .id(1)
+                .username(username)
+                .build();
+
+        assumeThatCode(() -> user.getPassword().substring(1,3))
+                .isInstanceOf(NullPointerException.class);
+
+        assumeThat(user.getUsername()).isEqualTo(username);
+    }
+
+    @Test
+    @DisplayName("Enabled : EnabledOn")
+    @EnabledOnOs(OS.MAC)
+    void enabeld1() {
+        System.out.println( "__KENNY__ EnabledOnOs");
+    }
+
+    @Test
+    @DisplayName("Enabled : EnabledIf...")
+    @EnabledIfEnvironmentVariable(named = "ENV", matches = "TEST")
+    void enabeld2() {
+        System.out.println( "__KENNY__ EnabledIfEnvironmentVariable");
+    }
+
+    @Test
+    @DisplayName("Disabled")
+    @Disabled
+    void disabled1() {
+        System.out.println( "__KENNY__ Disabled1");
+    }
+
+    @Test
+    @DisplayName("DisabledIfSystemProperty")
+    @DisabledIfSystemProperty(named = "junit.system.env", matches = "1234")
+    void disabled2() {
+        System.out.println( "__KENNY__ Disabled2");
     }
 
     @AfterEach
