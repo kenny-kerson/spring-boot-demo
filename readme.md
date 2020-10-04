@@ -59,10 +59,12 @@
    
 ## # spring-junit5-mockito-test
 ### Spec
-- TBD
+- Test : spring-boot-test-starter
+   * Junit5
+   * Mockito
 ### Commit List
 - init module : cdd37fa2
-- 1.JUnit5
+- 1.**JUnit5**
    * 시작 & 테스트이름 표시(@DisplayName) : `7f949d58`
    * Assertion & AssertJ : `47a37934`
    * 조건에 따라 테스트실행(Assumption) : `7d29b67e`
@@ -70,9 +72,10 @@
    * 커스텀 태그 : `a1ee9f63`
    * 테스트 반복하기1( @RepeatedTest ) : 
    * ✔️ 테스트 반복하기2( @ParameterizedTest ) : 
-- 2.Mockito
+- 2.**Mockito**
    * TBD
-- 3.TBD
+- 3.**Docker 테스트**
+   * TBD
 
 ## # spring-web-mvc
 ### Spec
