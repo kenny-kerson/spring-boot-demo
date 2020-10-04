@@ -40,8 +40,10 @@
 
 ## # spring-security
 ### Spec
+- Spring
+  * spring-boot-starter-web
 - DBMS
-  * RDB : **H2** inmemory DB
+  * RDB : **H2** in-memory DB
   * ORM : **JPA**
 - Security : Spring Security
 - Template Engine : **Thymeleaf**
@@ -61,6 +63,11 @@
    
 ## # spring-junit5-mockito-test
 ### Spec
+- Spring
+   * spring-boot-starter-web
+- DBMS
+   * RDB : H2 in-memory DB
+   * ORM : JPA   
 - Test : spring-boot-test-starter
    * **Junit5**
    * **AssertJ**
@@ -76,9 +83,8 @@
    * ✔️ 테스트 반복하기( @RepeatedTest, @ParameterizedTest ) : `0099df99`
    * 테스트 인스턴스 : `216e9759` 
    * 테스트 순서 : `e073ae97`
-   * 확장 모델 : `TBD`
+   * 확장 모델 : `23e7fbce`
 - **Mockito**
-   * 시작 : `TBD`
    * Mock 객체 만들기 : `TBD` 
    * Mock 객체 Stubbing( 행동정의 ) : `TBD` 
    * Mock 객체 검증 : `TBD`

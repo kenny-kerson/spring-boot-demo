@@ -1,1 +1,8 @@
 # 글로벌 셋팅
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
