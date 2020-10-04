@@ -49,31 +49,41 @@
    * spring-security-test
 ### Commit List
 - init module : `a8ee4f23`
-- 1.Form 인증
+- **Form 인증**
    * 인메모리 유저 추가 : `b4cb5eb7`
    * DAO 유저 추가 : `296f0985`
    * PasswordEncoder 적용( 디폴트 : BcryptPasswordEncoder ) : `91553216`
    * 테스트코드 추가 : `919df97c`
-- 2.Spring Security 아키텍쳐
-   * TBD 
+- **Spring Security 아키텍쳐**
+   * SecurityContextHolder : `TBD`
+   * AuthenticationManger & Authentication : `TBD`
+   * ThreadLocal : `TBD`  
    
 ## # spring-junit5-mockito-test
 ### Spec
 - Test : spring-boot-test-starter
    * Junit5
+   * AssertJ
    * Mockito
 ### Commit List
 - init module : cdd37fa2
-- 1.**JUnit5**
+- **JUnit5**
    * 시작 & 테스트이름 표시(@DisplayName) : `7f949d58`
    * Assertion & AssertJ : `47a37934`
    * 조건에 따라 테스트실행(Assumption) : `7d29b67e`
    * 태깅과 필터링(@Tag) : `cfde001b`
    * 커스텀 태그 : `a1ee9f63`
-   * ✔️ 테스트 반복하기( @RepeatedTest, @ParameterizedTest ) : 
-- 2.**Mockito**
-   * TBD
-- 3.**Docker 테스트**
+   * ✔️ 테스트 반복하기( @RepeatedTest, @ParameterizedTest ) : `0099df99`
+   * 테스트 인스턴스 : `TBD` 
+   * 테스트 순서 : `TBD`
+   * 확장 모델 : `TBD`
+- **Mockito**
+   * 시작 : `TBD`
+   * Mock 객체 만들기 : `TBD` 
+   * Mock 객체 Stubbing( 행동정의 ) : `TBD` 
+   * Mock 객체 검증 : `TBD`
+   * BDD : `TBD`
+- **Docker 테스트**
    * TBD
 
 ## # spring-web-mvc
