@@ -1,12 +1,10 @@
 package com.kenny.springbootdemo.springjunit5mockitotest.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
 @Getter
+@ToString
 @NoArgsConstructor @AllArgsConstructor
 public class User {
 
@@ -15,4 +13,5 @@ public class User {
     private String password;
     private String roles;
     private Boolean isMale;
+    private Integer age;
 }

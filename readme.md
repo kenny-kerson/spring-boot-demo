@@ -70,8 +70,7 @@
    * 조건에 따라 테스트실행(Assumption) : `7d29b67e`
    * 태깅과 필터링(@Tag) : `cfde001b`
    * 커스텀 태그 : `a1ee9f63`
-   * 테스트 반복하기1( @RepeatedTest ) : 
-   * ✔️ 테스트 반복하기2( @ParameterizedTest ) : 
+   * ✔️ 테스트 반복하기( @RepeatedTest, @ParameterizedTest ) : 
 - 2.**Mockito**
    * TBD
 - 3.**Docker 테스트**
