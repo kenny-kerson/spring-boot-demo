@@ -27,14 +27,16 @@ class UserTest {
 
     @Test
     @DisplayName("유저 만들기1 😀")
+    @Tag("Assertion")
     void createUser1() {
         User user = new User();
-        assertThat(user).isNotNull();
+        assertThat(user).isNull();
     }
 
     @Test
     @DisplayName("유저 만들기2 🥰")
     @Disabled
+    @Tag("Assertion")
     void createUser2() {
         User user = new User();
         assertThat(user).isNotNull();

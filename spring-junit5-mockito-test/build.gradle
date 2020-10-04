@@ -19,6 +19,10 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
+// 테스트코드의 @Tag("Assertion")을 제외하고,
+// ./gradlew :spring-junit5-mockito-test:test 를 수행하기 위한 테스트코드
 test {
-	useJUnitPlatform()
+	useJUnitPlatform {
+		excludeTags "Assertion"
+	}
 }
