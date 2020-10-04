@@ -3,17 +3,21 @@ package com.kenny.springbootdemo.springjunit5mockitotest.user;
 import com.kenny.springbootdemo.springjunit5mockitotest.annotation.AssertionTest;
 import com.kenny.springbootdemo.springjunit5mockitotest.annotation.AssumptionTest;
 import com.kenny.springbootdemo.springjunit5mockitotest.annotation.EnabledOrDisabledTest;
+import com.kenny.springbootdemo.springjunit5mockitotest.annotation.SlowTest;
+import com.kenny.springbootdemo.springjunit5mockitotest.extension.FindSlowTestExtension;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.assertj.core.api.Assumptions.assumeThatCode;
 
+@ExtendWith(FindSlowTestExtension.class)
 class UserTest {
 
     @BeforeAll
@@ -75,15 +79,17 @@ class UserTest {
 
     }
 
+//    @SlowTest
     @Test
     @DisplayName("Assertion : 동일여부 체크")
-    @Tag("Assertion")
-    void assertionEqualsCheck() {
+    void assertionEqualsCheck() throws InterruptedException {
         final User user = User.builder()
                 .id(1)
                 .build();
 
         assertThat(user.getId()).isEqualTo(1);
+
+        Thread.sleep(2000L);
     }
 
     @Test
