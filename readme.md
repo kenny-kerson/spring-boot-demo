@@ -1,6 +1,6 @@
 # Spring Boot Demo
 - **개요**
-   * Spring **Web MVC** / Spring Data **JPA** / Spring **Security** / Spring **Test** / Spring **Core** / Spring Boot 등을 학습하기 위한, 코드를 작성하는 프로젝트
+   * Spring **Web MVC** / Spring Data **JPA** / Spring **Security** / Spring **Test** / Spring **Core** / Spring **Boot** 등을 학습하기 위한, 코드를 작성하는 프로젝트
 - **목적**
    * 각 기술별 주요 코드들을 샘플로 참고할 수 있도록, **commit id를 리스트업** 하는것이 목적
 
@@ -67,9 +67,9 @@
    * Assertion & AssertJ : `47a37934`
    * 조건에 따라 테스트실행(Assumption) : `7d29b67e`
    * 태깅과 필터링(@Tag) : `cfde001b`
-   * 커스텀 태그 : 
-   * 테스트 반복하기() : 
-   * ✔️ 테스트 반복하기( @ParameterizedTest ) : 
+   * 커스텀 태그 : `a1ee9f63`
+   * 테스트 반복하기1( @RepeatedTest ) : 
+   * ✔️ 테스트 반복하기2( @ParameterizedTest ) : 
 - 2.Mockito
    * TBD
 - 3.TBD
