@@ -42,6 +42,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : Null 체크")
+    @Tag("Assertion")
     void assertionNullCheck() {
         final User user = null;
 
@@ -50,6 +51,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : NotNull 체크")
+    @Tag("Assertion")
     void assertionNotNullCheck() {
         final User user = User.builder()
                 .id(1)
@@ -60,6 +62,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : True or False 체크")
+    @Tag("Assertion")
     void assertionTrueOrFalseCheck() {
         final User user = User.builder()
                 .id(1)
@@ -74,6 +77,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : 동일여부 체크")
+    @Tag("Assertion")
     void assertionEqualsCheck() {
         final User user = User.builder()
                 .id(1)
@@ -84,6 +88,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : 모든 Assertion 체크")
+    @Tag("Assertion")
     void assertionAllCheck() {
         final String role = "USER";
         final String username = "kenny";
@@ -108,6 +113,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : NullPointException 체크")
+    @Tag("Assertion")
     void assertionNPECheck() {
         final User user = User.builder()
                 .id(1)
@@ -119,6 +125,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : Exception 체크")
+    @Tag("Assertion")
     void assertionExceptionCheck() {
         final User user = User.builder()
                 .id(1)
@@ -130,12 +137,14 @@ class UserTest {
 
     @Test
     @DisplayName("Assertion : Timeout 체크")
+    @Tag("Assertion")
     void assertionTimeoutCheck() {
         // assertj에는 Timeout 체크기능을 별도로 없는듯?!
     }
 
     @Test
     @DisplayName("Assumption : assumeThat()")
+    @Tag("Assumption")
     void assumption1() {
         final String username = "kenny";
         final User user = User.builder()
@@ -154,6 +163,7 @@ class UserTest {
 
     @Test
     @DisplayName("Assumption : assumeThatCode()")
+    @Tag("Assumption")
     void assumption2() {
         final String username = "kenny";
         final User user = User.builder()
@@ -170,6 +180,7 @@ class UserTest {
     @Test
     @DisplayName("Enabled : EnabledOn")
     @EnabledOnOs(OS.MAC)
+    @Tag("EnabledOrDisabled")
     void enabeld1() {
         System.out.println( "__KENNY__ EnabledOnOs");
     }
@@ -177,6 +188,7 @@ class UserTest {
     @Test
     @DisplayName("Enabled : EnabledIf...")
     @EnabledIfEnvironmentVariable(named = "ENV", matches = "TEST")
+    @Tag("EnabledOrDisabled")
     void enabeld2() {
         System.out.println( "__KENNY__ EnabledIfEnvironmentVariable");
     }
@@ -184,6 +196,7 @@ class UserTest {
     @Test
     @DisplayName("Disabled")
     @Disabled
+    @Tag("EnabledOrDisabled")
     void disabled1() {
         System.out.println( "__KENNY__ Disabled1");
     }
@@ -191,6 +204,7 @@ class UserTest {
     @Test
     @DisplayName("DisabledIfSystemProperty")
     @DisabledIfSystemProperty(named = "junit.system.env", matches = "1234")
+    @Tag("EnabledOrDisabled")
     void disabled2() {
         System.out.println( "__KENNY__ Disabled2");
     }
