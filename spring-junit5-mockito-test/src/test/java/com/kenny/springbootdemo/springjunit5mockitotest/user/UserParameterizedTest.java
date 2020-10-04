@@ -1,6 +1,9 @@
 package com.kenny.springbootdemo.springjunit5mockitotest.user;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.AggregateWith;
@@ -14,6 +17,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+@TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 public class UserParameterizedTest {
 
     @ParameterizedTest(name = "{displayName} : {index} / {argumentsWithNames}")
@@ -23,6 +27,7 @@ public class UserParameterizedTest {
             "반복할 수 있다."
     })
     @DisplayName("테스트 반복하기 : @ParameterizedTest & @ValueSource")
+    @Order(6)
     void parameterizedTest1( String value ) {
         System.out.println( "__KENNY__ value : " + value );
     }
@@ -31,6 +36,7 @@ public class UserParameterizedTest {
     @NullAndEmptySource
     @ValueSource(strings = {"널과 공백을 포함해서 테스트"})
     @DisplayName("테스트 반복하기 : @ParameterizedTest & @NullAndEmptySource")
+    @Order(5)
     void parameterizedTest2( String value ) {
         System.out.println( "__KENNY__ value : " + value );
     }
@@ -42,6 +48,7 @@ public class UserParameterizedTest {
             30
     })
     @DisplayName("테스트 반복하기 : 암묵적인 형변환")
+    @Order(4)
     void parameterizedTest3( Integer value ) {
         System.out.println( "__KENNY__ value : " + value );
     }
@@ -53,6 +60,7 @@ public class UserParameterizedTest {
             "30"
     })
     @DisplayName("테스트 반복하기 : 커스텀 Converter 사용")
+    @Order(3)
     void parameterizedTest4( @ConvertWith(UserCustomConverter.class) User user ) {
         System.out.println( "__KENNY__ user : " + user );
     }
@@ -77,6 +85,7 @@ public class UserParameterizedTest {
             "3, 'dana'"
     })
     @DisplayName("테스트 반복하기 : @CsvSource")
+    @Order(2)
     void parameterizedTest5( Integer value1, String value2 ) {
         System.out.println( "__KENNY__ value1 : " + value1 );
         System.out.println( "__KENNY__ value2 : " + value2 );
@@ -85,6 +94,7 @@ public class UserParameterizedTest {
     @ParameterizedTest
     @CsvSource(value = {"1, 'kenny'", "2, 'bella'", "3, 'dana'"})
     @DisplayName("테스트 반복하기 : @CsvSource & Custom Aggregator 사용")
+    @Order(1)
     void parameterizedTest6( @AggregateWith(UserCustomAggregator.class) User user ) {
         System.out.println( "__KENNY__ user : " + user);
     }

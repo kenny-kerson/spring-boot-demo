@@ -74,7 +74,7 @@
    * 태깅과 필터링(@Tag) : `cfde001b`
    * 커스텀 태그 : `a1ee9f63`
    * ✔️ 테스트 반복하기( @RepeatedTest, @ParameterizedTest ) : `0099df99`
-   * 테스트 인스턴스 : `835f0485` 
+   * 테스트 인스턴스 : `216e9759` 
    * 테스트 순서 : `TBD`
    * 확장 모델 : `TBD`
 - **Mockito**
