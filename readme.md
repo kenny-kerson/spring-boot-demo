@@ -63,10 +63,10 @@
 ### Commit List
 - init module : cdd37fa2
 - 1.JUnit5
-   * 시작 & 테스트이름 표시 : `7f949d58`
+   * 시작 & 테스트이름 표시(@DisplayName) : `7f949d58`
    * Assertion & AssertJ : `47a37934`
    * 조건에 따라 테스트실행(Assumption) : `7d29b67e`
-   * 태깅과 필터링 : 
+   * 태깅과 필터링(@Tag) : `cfde001b`
    * 커스텀 태그 : 
    * 테스트 반복하기() : 
    * ✔️ 테스트 반복하기( @ParameterizedTest ) : 

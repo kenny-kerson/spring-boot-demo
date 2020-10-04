@@ -1,13 +1,14 @@
 package com.kenny.springbootdemo.springjunit5mockitotest.user;
 
-import org.assertj.core.api.Assumptions;
+import com.kenny.springbootdemo.springjunit5mockitotest.annotation.AssertionTest;
+import com.kenny.springbootdemo.springjunit5mockitotest.annotation.AssumptionTest;
+import com.kenny.springbootdemo.springjunit5mockitotest.annotation.EnabledOrDisabledTest;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.DisabledIfSystemProperty;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
-import org.mockito.internal.matchers.Null;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assumptions.assumeThat;
@@ -25,18 +26,15 @@ class UserTest {
         System.out.println( "__KENNY__ beforeEach()");
     }
 
-    @Test
+    @AssertionTest
     @DisplayName("유저 만들기1 😀")
-    @Tag("Assertion")
     void createUser1() {
         User user = new User();
-        assertThat(user).isNull();
+        assertThat(user).isNotNull();
     }
 
-    @Test
+    @AssertionTest
     @DisplayName("유저 만들기2 🥰")
-    @Disabled
-    @Tag("Assertion")
     void createUser2() {
         User user = new User();
         assertThat(user).isNotNull();
@@ -163,9 +161,8 @@ class UserTest {
         assertThat(user.getUsername()).isEqualTo(username);
     }
 
-    @Test
+    @AssumptionTest
     @DisplayName("Assumption : assumeThatCode()")
-    @Tag("Assumption")
     void assumption2() {
         final String username = "kenny";
         final User user = User.builder()
@@ -195,18 +192,16 @@ class UserTest {
         System.out.println( "__KENNY__ EnabledIfEnvironmentVariable");
     }
 
-    @Test
+    @EnabledOrDisabledTest
     @DisplayName("Disabled")
     @Disabled
-    @Tag("EnabledOrDisabled")
     void disabled1() {
         System.out.println( "__KENNY__ Disabled1");
     }
 
-    @Test
+    @EnabledOrDisabledTest
     @DisplayName("DisabledIfSystemProperty")
     @DisabledIfSystemProperty(named = "junit.system.env", matches = "1234")
-    @Tag("EnabledOrDisabled")
     void disabled2() {
         System.out.println( "__KENNY__ Disabled2");
     }
