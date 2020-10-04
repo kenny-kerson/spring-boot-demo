@@ -62,9 +62,9 @@
 ## # spring-junit5-mockito-test
 ### Spec
 - Test : spring-boot-test-starter
-   * Junit5
-   * AssertJ
-   * Mockito
+   * **Junit5**
+   * **AssertJ**
+   * **Mockito**
 ### Commit List
 - init module : cdd37fa2
 - **JUnit5**
