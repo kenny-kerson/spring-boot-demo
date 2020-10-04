@@ -1,5 +1,7 @@
 package com.kenny.springbootdemo.springjunit5mockitotest.user;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -11,6 +13,11 @@ public class TestInstanceTest {
 
     int cnt;
 
+    @BeforeAll
+    void beforeAll() {
+        System.out.println( "__KENNY__ beforeAll : PER_CLASS일경우, static method로 선언할 필요가 없다!");
+    }
+
     @Test
     void increaseCnt1() {
         System.out.println( "__KENNY__ cnt : " + cnt++);
@@ -19,5 +26,10 @@ public class TestInstanceTest {
     @Test
     void increaseCnt2() {
         System.out.println( "__KENNY__ cnt : " + cnt++);
+    }
+
+    @AfterAll
+    void afterAll() {
+        System.out.println( "__KENNY__ afterAll : PER_CLASS일경우, static method로 선언할 필요가 없다!");
     }
 }
