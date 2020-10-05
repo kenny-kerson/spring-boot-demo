@@ -5,4 +5,8 @@ spring:
       enabled: true
   jpa:
     hibernate:
+      # WAS 기동시마다 테이블 create, 종료시 drop
       ddl-auto: create-drop
+  jackson:
+    # serialize 할때 NULL인 필드는 제외
+    default-property-inclusion: non_null

@@ -86,9 +86,9 @@
    * 확장 모델 : `23e7fbce`
 - **Mockito**
    * Mock 객체 만들기 : `TBD` 
-   * Mock 객체 Stubbing( 행동정의 ) : `TBD` 
-   * Mock 객체 검증 : `TBD`
-   * BDD : `TBD`
+   * Mock 객체 Stubbing( 행동정의 - when / given ) : `TBD` 
+   * Mock 객체 검증( verify / then ) : `TBD`
+   * BDD( given, then ) : `TBD`
 - **Docker 테스트**
    * TBD
 
