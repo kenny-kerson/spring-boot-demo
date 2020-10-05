@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-class StudyControllerTest extends IntegrationTest {
+class StudyControllerIntegrationTest extends IntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
