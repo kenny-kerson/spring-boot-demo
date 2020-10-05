@@ -32,6 +32,7 @@ public class UserParameterizedTest {
         System.out.println( "__KENNY__ value : " + value );
     }
 
+
     @ParameterizedTest(name = "{displayName} : {index} / {argumentsWithNames}")
     @NullAndEmptySource
     @ValueSource(strings = {"널과 공백을 포함해서 테스트"})
@@ -40,6 +41,7 @@ public class UserParameterizedTest {
     void parameterizedTest2( String value ) {
         System.out.println( "__KENNY__ value : " + value );
     }
+
 
     @ParameterizedTest(name = "{displayName} : {index} / {argumentsWithNames}")
     @ValueSource(ints = {
@@ -52,6 +54,7 @@ public class UserParameterizedTest {
     void parameterizedTest3( Integer value ) {
         System.out.println( "__KENNY__ value : " + value );
     }
+
 
     @ParameterizedTest
     @ValueSource(strings = {
@@ -78,6 +81,7 @@ public class UserParameterizedTest {
         }
     }
 
+
     @ParameterizedTest
     @CsvSource(value = {
             "1, 'kenny'",
@@ -98,6 +102,7 @@ public class UserParameterizedTest {
     void parameterizedTest6( @AggregateWith(UserCustomAggregator.class) User user ) {
         System.out.println( "__KENNY__ user : " + user);
     }
+
 
     /**
      * Csv 인자값을 받아서, User 객체 생성시 id & username으로 매핑해주는 Aggregator
