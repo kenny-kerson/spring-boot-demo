@@ -3,6 +3,9 @@ package com.kenny.springbootdemo.springjunit5mockitotest.study;
 import com.kenny.springbootdemo.springjunit5mockitotest.member.MemberServiceManager;
 import com.kenny.springbootdemo.springjunit5mockitotest.user.User;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
@@ -11,15 +14,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
+@ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudyServiceTest {
 
     // StudyRepository & MemberServiceManager Mocking
     // Only MemberServiceManager Mocking
 
-    @MockBean
+    @Mock
     StudyRepository studyRepository;
-    @MockBean
+    @Mock
     MemberServiceManager memberServiceManager;
     StudyService studyService;
 
