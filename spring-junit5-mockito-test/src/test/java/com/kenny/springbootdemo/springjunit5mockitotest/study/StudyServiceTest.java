@@ -13,6 +13,8 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -36,6 +38,8 @@ class StudyServiceTest {
     @DisplayName("1.(단위)getStudyInfo : 정상조회")
     void getStudyInfo() {
         // Given
+        assertThat(studyService).isNotNull();
+
         final Study study = Study.builder()
                 .id(1)
                 .name("더미 스터디")
@@ -59,9 +63,12 @@ class StudyServiceTest {
         final StudyInfo.Out studyInfo = this.studyService.getStudyInfo(1);
 
         // Then
+        then(memberServiceManager).should(times(1)).getMemberInfo(11);
+
         assertThat(studyInfo).isNotNull();
         assertThat(studyInfo.getId()).isEqualTo(1);
         assertThat(studyInfo.getMemberId()).isEqualTo(11);
         assertThat(studyInfo.getMemberName()).isEqualTo("kenny");
+
     }
 }
