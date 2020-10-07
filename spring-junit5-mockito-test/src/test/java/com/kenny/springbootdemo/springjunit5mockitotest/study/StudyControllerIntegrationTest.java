@@ -27,7 +27,7 @@ class StudyControllerIntegrationTest extends IntegrationTest {
     StudyService studyService;
 
     @Test
-    @DisplayName("1. getStudyInfo : 정상조회")
+    @DisplayName("1.(통합)getStudyInfo : 정상조회")
     @Order(Ordered.HIGHEST_PRECEDENCE)
     void getStudyInfo1() throws Exception {
         // Given

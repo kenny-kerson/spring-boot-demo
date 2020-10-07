@@ -26,7 +26,7 @@ public class StudyServiceIntegrationTest extends IntegrationTest {
     MemberServiceManager memberServiceManager;
 
     @Test
-    @DisplayName("1. getStudyInfo 메서드 : 정상조회")
+    @DisplayName("1.(통합)getStudyInfo 메서드 : 정상조회")
     @Order(Ordered.HIGHEST_PRECEDENCE)
     void getStudyInfo() {
         // Given
