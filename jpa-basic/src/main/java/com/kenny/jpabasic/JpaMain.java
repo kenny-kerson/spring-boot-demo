@@ -10,21 +10,31 @@ public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Hello");
         EntityManager em = emf.createEntityManager();
+
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setId(1L);
-            member.setName("HelloA");
+            // 등록
+//            Member member = new Member();
+//            member.setId(2L);
+//            member.setName("HelloB");
+//
+//            em.persist(member);
 
-            em.persist(member);
+            // 조회
+            Member m = em.find(Member.class, 1L);
+            System.out.println( "__KENNY__ m.getId() : " + m.getId());
+
+            // 수정
+            m.setName("HelloAA");
+
+            tx.commit();
 
         } catch( Exception e ) {
             tx.rollback();
 
         } finally {
-            tx.commit();
             em.close();
         }
 
