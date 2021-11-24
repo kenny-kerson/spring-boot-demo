@@ -16,19 +16,19 @@ public class JpaMain {
         tx.begin();
 
         try {
-//            // 등록
-//            Member member = new Member();
-//            member.setId(2L);
-//            member.setName("HelloB");
-//
-//            em.persist(member);
+            // 등록
+            Member member1 = new Member(10L, "HelloAA");
+            Member member2 = new Member(20L, "HelloBB");
+
+            em.persist(member1);
+            em.persist(member2);
 
             // 조회
-            Member m = em.find(Member.class, 2L);
-            System.out.println( "__KENNY__ m.getId() : " + m.getId());
-
-            // 수정
-            m.setName("HelloAA");
+//            Member m = em.find(Member.class, 2L);
+//            System.out.println( "__KENNY__ m.getId() : " + m.getId());
+//
+//            // 수정
+//            m.setName("HelloAA");
 
             // JPQL 조회
             final List<Member> mList = em.createQuery("select m from Member as m", Member.class)

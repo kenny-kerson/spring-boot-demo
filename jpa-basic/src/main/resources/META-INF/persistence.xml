@@ -21,6 +21,8 @@
             <property name="hibernate.format_sql" value="true"/>
             <!-- 쿼리 출력 시 주석(comments)도 함께 출력 -->
             <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- JDBC Batch SQL 사용여부 및 사이즈 설정 -->
+            <property name="hibernate.jdbc.batch_size" value="10"/>
         </properties>
     </persistence-unit>
 </persistence>
