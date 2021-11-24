@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class JpaMain {
 
@@ -28,6 +29,13 @@ public class JpaMain {
 
             // 수정
             m.setName("HelloAA");
+
+            // JPQL 조회
+            final List<Member> mList = em.createQuery("select m from Member as m", Member.class)
+                    .setFirstResult(0)
+                    .setMaxResults(10)
+                    .getResultList();
+            System.out.println( "__KENNY__ mList : " + mList);
 
             tx.commit();
 
