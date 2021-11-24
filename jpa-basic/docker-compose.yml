@@ -1,0 +1,11 @@
+version: '2'
+services:
+  h2:
+    hostname: 'h2'
+    image: 1000kit/h2
+    ports:
+      - "8181:8181"
+      - "1521:1521"
+#    volumes:
+#      - h2-data:/opt/h2-data
+    container_name: "jpa-basic-h2database"

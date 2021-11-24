@@ -15,7 +15,7 @@ public class JpaMain {
         tx.begin();
 
         try {
-            // 등록
+//            // 등록
 //            Member member = new Member();
 //            member.setId(2L);
 //            member.setName("HelloB");
@@ -23,7 +23,7 @@ public class JpaMain {
 //            em.persist(member);
 
             // 조회
-            Member m = em.find(Member.class, 1L);
+            Member m = em.find(Member.class, 2L);
             System.out.println( "__KENNY__ m.getId() : " + m.getId());
 
             // 수정
