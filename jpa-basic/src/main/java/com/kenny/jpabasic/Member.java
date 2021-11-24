@@ -10,8 +10,8 @@ public class Member {
     private Long id;
     private String name;
 
+    // JPA 내부적으로 Reflection을 사용하므로 기본생성자를 필수로 만들어줘야 함
     public Member() {
-
     }
 
     public Member(Long id, String name) {
