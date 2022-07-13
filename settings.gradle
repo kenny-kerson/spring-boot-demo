@@ -4,5 +4,6 @@ include(
         ':spring-security',
         ':spring-junit5-mockito-test',
         ':spring-web-mvc',
-        'jpa-basic'
+        ':jpa-basic',
+        ':mvc-beginning:servlet'
 )
