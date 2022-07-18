@@ -13,11 +13,24 @@ public class RequestHeaderServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        System.out.println("RequestHeaderServlet.service");
+
+        // START Line
+        System.out.println("============= START Line");
+        final String method = request.getMethod();
+        final String protocol = request.getProtocol();
+        final String scheme = request.getScheme();
+
+        System.out.println("method = " + method);
+        System.out.println("protocol = " + protocol);
+        System.out.println("scheme = " + scheme);
+
         // Http Header
+        System.out.println("============= HTTP Header");
         request.getHeaderNames()
                 .asIterator()
                 .forEachRemaining(el -> {
-                    System.out.println(el);
+                    System.out.println(el + ": " + request.getHeader(el));
                 });
 
         // Http Header 편의 조회
