@@ -13,7 +13,6 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/member")
-    @Transactional
     public void registerMember() {
         memberService.registerMember();
     }

@@ -14,8 +14,8 @@ public class MemberServiceRequiresNew {
 
     private final MemberRepository memberRepository;
 
-    //    @Transactional
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.DEFAULT)
+        @Transactional
+//    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.DEFAULT)
     public void registerMember2() {
         Member member2 = Member.builder()
                 .id(2L)
