@@ -23,6 +23,9 @@ public class JpaMain {
             em.persist(member1);
             em.persist(member2);
 
+            member1.setName("test");
+            em.clear();
+
             // 조회
 //            Member m = em.find(Member.class, 2L);
 //            System.out.println( "__KENNY__ m.getId() : " + m.getId());
@@ -31,11 +34,11 @@ public class JpaMain {
 //            m.setName("HelloAA");
 
             // JPQL 조회
-            final List<Member> mList = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(0)
-                    .setMaxResults(10)
-                    .getResultList();
-            System.out.println( "__KENNY__ mList : " + mList);
+//            final List<Member> mList = em.createQuery("select m from Member as m", Member.class)
+//                    .setFirstResult(0)
+//                    .setMaxResults(10)
+//                    .getResultList();
+//            System.out.println( "__KENNY__ mList : " + mList);
 
             tx.commit();
 
