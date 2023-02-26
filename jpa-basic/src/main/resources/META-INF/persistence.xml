@@ -23,6 +23,8 @@
             <property name="hibernate.use_sql_comments" value="true"/>
             <!-- JDBC Batch SQL 사용여부 및 사이즈 설정 -->
             <property name="hibernate.jdbc.batch_size" value="10"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
         </properties>
     </persistence-unit>
 </persistence>
