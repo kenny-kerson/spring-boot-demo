@@ -1,5 +1,6 @@
 package com.kenny.designpattern.cor;
 
+// ConcreteHandler
 public class LimitSupport extends Support {
 
     // 이 번호 미만이면 해결할 수 있는 하위클래스

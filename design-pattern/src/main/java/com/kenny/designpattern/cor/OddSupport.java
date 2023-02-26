@@ -1,5 +1,6 @@
 package com.kenny.designpattern.cor;
 
+// ConcreteHandler
 public class OddSupport extends Support {
     public OddSupport(final String name) {
         super(name);

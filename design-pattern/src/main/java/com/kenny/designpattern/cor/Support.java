@@ -1,6 +1,7 @@
 package com.kenny.designpattern.cor;
 
 // Chain of Responsibility : 책임사슬 패턴
+// Handler
 public abstract class Support {
     private String name;
     private Support next;

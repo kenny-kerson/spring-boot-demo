@@ -1,5 +1,6 @@
 package com.kenny.designpattern.cor;
 
+// ConcreteHandler
 public class SpecialSupport extends Support {
 
     // 이 번호만 해결할 수 있는 하위 클래스

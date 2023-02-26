@@ -1,5 +1,6 @@
 package com.kenny.designpattern.cor;
 
+// ConcreteHandler
 public class NoSupport extends Support {
     public NoSupport(final String name) {
         super(name);
