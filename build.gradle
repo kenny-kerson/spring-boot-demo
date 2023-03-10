@@ -1,7 +1,7 @@
 
 buildscript {
     ext {
-        springBootVersion = '2.3.4.RELEASE'
+        springBootVersion = '2.7.9'
     }
     repositories {
         mavenCentral()
@@ -18,8 +18,8 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
 
     group = 'com.kenny.demo'
-    version = '0.0.1.RELEASE'
-    sourceCompatibility = '11'
+    version = '0.1.RELEASE'
+    sourceCompatibility = '17'
 
     repositories {
         mavenCentral()
