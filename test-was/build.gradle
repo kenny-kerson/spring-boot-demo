@@ -19,6 +19,9 @@ repositories {
 }
 
 dependencies {
+    // TODO : jaskson library 2.12 미만 버전은, 멤버필드 final을 수용하지 못한다.
+//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.4'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'org.projectlombok:lombok'
