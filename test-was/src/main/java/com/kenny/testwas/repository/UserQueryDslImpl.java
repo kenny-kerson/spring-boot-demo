@@ -22,7 +22,8 @@ public class UserQueryDslImpl extends QuerydslRepositorySupport {
     public void join() {
         final List<Object> fetchResult = from(user, userDetail)
                 .where(user.id.eq(userDetail.userId))
-                .fetch();
+                .fetch()
+        ;
 
         log.debug("fetchResult : {}", fetchResult);
     }

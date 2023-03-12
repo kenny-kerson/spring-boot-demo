@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mysql:
+    platform: linux/x86_64
+    image: mysql:8.0
+    container_name: mysql-rdb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1qaz@WSX
+      # TODO : db명이 왜 mysql로만 접근이 되고, 지정한 testdb로는 접근이 안되지?
+      MYSQL_DATABASE: testdb
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./mysql-init.d:/docker-entrypoint-initdb.d
