@@ -1,4 +1,4 @@
-package com.kenny.testwas.ui.dto;
+package com.kenny.testwas.company.ui.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

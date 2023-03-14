@@ -1,8 +1,8 @@
-package com.kenny.testwas.ui;
+package com.kenny.testwas.company.ui;
 
-import com.kenny.testwas.ui.dto.StandardRequestDto;
-import com.kenny.testwas.ui.dto.StandardResponseDto;
-import com.kenny.testwas.ui.dto.UserDto;
+import com.kenny.testwas.company.ui.dto.StandardRequestDto;
+import com.kenny.testwas.company.ui.dto.StandardResponseDto;
+import com.kenny.testwas.company.ui.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +33,7 @@ public class UserController {
 //                .cstno(input.getCstno())
 //                .guid(input.getGuid())
 //                .dataBody(UserDto.Out.builder()
-//                        .id(input.getDataBody().getId())
+////                        .id(input.getDataBody().getId())
 //                        .name("고케니")
 //                        .teamId("1")
 //                        .build()

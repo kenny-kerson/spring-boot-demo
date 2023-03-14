@@ -1,4 +1,4 @@
-package com.kenny.testwas.domain;
+package com.kenny.testwas.company.domain;
 
 import lombok.Builder;
 import lombok.Getter;

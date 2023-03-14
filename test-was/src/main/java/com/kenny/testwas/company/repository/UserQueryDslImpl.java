@@ -1,16 +1,14 @@
-package com.kenny.testwas.repository;
+package com.kenny.testwas.company.repository;
 
-import com.kenny.testwas.domain.QUser;
-import com.kenny.testwas.domain.QUserDetail;
-import com.kenny.testwas.domain.User;
+import com.kenny.testwas.company.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.kenny.testwas.domain.QUser.user;
-import static com.kenny.testwas.domain.QUserDetail.userDetail;
+import static com.kenny.testwas.company.domain.QUser.user;
+import static com.kenny.testwas.company.domain.QUserDetail.userDetail;
 
 @Repository
 @Slf4j

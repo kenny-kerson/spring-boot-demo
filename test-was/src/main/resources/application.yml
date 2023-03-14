@@ -27,4 +27,6 @@ server:
 
 logging:
   level:
-    com.kenny.testwas: DEBUG
+    com.kenny.testwas: TRACE
+    org.hibernate.sql: TRACE
+    com.querydsl.sql: DEBUG

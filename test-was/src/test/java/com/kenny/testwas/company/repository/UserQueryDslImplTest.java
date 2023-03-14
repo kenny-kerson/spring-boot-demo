@@ -1,30 +1,22 @@
-package com.kenny.testwas.repository;
+package com.kenny.testwas.company.repository;
 
-import com.kenny.testwas.domain.Team;
-import com.kenny.testwas.domain.User;
+import com.kenny.testwas.company.domain.Team;
+import com.kenny.testwas.company.domain.User;
+import com.kenny.testwas.company.domain.UserDetail;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Optional;
-
 @SpringBootTest
-class UserRepositoryTest {
+class UserQueryDslImplTest {
 
-    @Autowired UserRepository userRepository;
+    @Autowired UserQueryDslImpl userQueryDsl;
+    @Autowired UserDetailRepository userDetailRepository;
     @Autowired TeamRepository teamRepository;
+    @Autowired UserRepository userRepository;
 
     @Test
-    void USER_저장_테스트() {
-        final User kenny = userRepository.save(User.builder()
-                .name("kenny")
-                .email("kenny.k@kakaobank.com")
-                .build()
-        );
-    }
-
-    @Test
-    void USER_TEAM_조인_테스트() {
+    void QueryDSL_세타조인_테스트() {
         final Team paysvcdev = Team.builder()
                 .teamName("결제서비스개발")
                 .build();
@@ -47,10 +39,18 @@ class UserRepositoryTest {
         final User id2 = userRepository.save(user2);
         final User id3 = userRepository.save(user3);
 
+        final UserDetail userDetail = UserDetail.builder()
+                .userId(id1.getId())
+                .phoneNumber("01021079479")
+                .companyName("kakaobank")
+                .build();
+
+        userDetailRepository.save(userDetail);
+
         userRepository.flush();
         teamRepository.flush();
+        userDetailRepository.flush();
 
-        final Optional<User> opUser = userRepository.findById(id1.getId());
-        System.out.println("opUser = " + opUser);
+        userQueryDsl.join();
     }
 }
