@@ -22,6 +22,7 @@ public class 가맹점그룹서비스관계내역 {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "카드상품서비스번호", insertable = false, updatable = false)
+    @ToString.Exclude
     private 카드상품서비스기본 카드상품서비스기본;
 
     protected 가맹점그룹서비스관계내역() {
