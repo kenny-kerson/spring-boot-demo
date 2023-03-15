@@ -21,7 +21,7 @@ public class 가맹점그룹서비스관계내역 {
     private String 서비스종료일자;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "카드상품서비스번호", insertable = false, updatable = false)
+    @JoinColumn(name = "카드상품서비스번호", insertable = false, updatable = false, foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     @ToString.Exclude
     private 카드상품서비스기본 카드상품서비스기본;
 

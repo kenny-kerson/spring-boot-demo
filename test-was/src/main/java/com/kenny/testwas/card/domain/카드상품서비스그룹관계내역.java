@@ -23,7 +23,7 @@ public class 카드상품서비스그룹관계내역 {
     private String 적용종료일자;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "카드상품서비스번호", insertable = false, updatable = false)
+    @JoinColumn(name = "카드상품서비스번호", insertable = false, updatable = false, foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     @ToString.Exclude
     public 카드상품서비스기본 카드상품서비스기본;
 

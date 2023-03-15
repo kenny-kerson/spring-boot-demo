@@ -19,7 +19,7 @@ public class User {
     private String email;
 
     @ManyToOne()
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private Team team;
 
 //    public void setTeam(Team team) {
