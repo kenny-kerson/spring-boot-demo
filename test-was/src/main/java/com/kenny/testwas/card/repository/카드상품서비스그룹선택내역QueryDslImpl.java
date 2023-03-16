@@ -4,10 +4,12 @@ import com.kenny.testwas.card.domain.Q카드상품서비스그룹관계내역;
 import com.kenny.testwas.card.domain.Q카드상품서비스그룹선택내역;
 import com.kenny.testwas.card.domain.Q카드상품서비스기본;
 import com.kenny.testwas.card.domain.카드상품서비스기본;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -17,11 +19,15 @@ public class 카드상품서비스그룹선택내역QueryDslImpl implements 카�
     private final JPAQueryFactory jpaQueryFactory;
 
     public List<카드상품서비스기본> multiJoin() {
+
+        final LocalDate now = LocalDate.now();
+
         return jpaQueryFactory.select(Q카드상품서비스기본.카드상품서비스기본)
                 .from(Q카드상품서비스그룹선택내역.카드상품서비스그룹선택내역)
                 .join(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역)
-                .on(Q카드상품서비스그룹선택내역.카드상품서비스그룹선택내역.카드상품서비스그룹번호.eq(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.카드상품서비스그룹번호)
-                        .and(Q카드상품서비스그룹선택내역.카드상품서비스그룹선택내역.카드상품번호.eq(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.카드상품코드))
+                    .on(Q카드상품서비스그룹선택내역.카드상품서비스그룹선택내역.카드상품서비스그룹번호.eq(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.카드상품서비스그룹번호)
+                    .and(Q카드상품서비스그룹선택내역.카드상품서비스그룹선택내역.카드상품번호.eq(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.카드상품코드))
+                    .and(Expressions.asDate(now).between(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.적용시작일자, Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.적용종료일자))
                 )
                 .join(Q카드상품서비스기본.카드상품서비스기본)
                 .on(Q카드상품서비스그룹관계내역.카드상품서비스그룹관계내역.카드상품서비스번호.eq(Q카드상품서비스기본.카드상품서비스기본.카드상품서비스번호))
