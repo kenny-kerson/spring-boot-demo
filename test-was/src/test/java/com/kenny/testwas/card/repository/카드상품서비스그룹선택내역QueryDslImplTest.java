@@ -19,4 +19,9 @@ class 카드상품서비스그룹선택내역QueryDslImplTest {
     void 서브쿼리() {
         repository.subQuery();
     }
+
+    @Test
+    void 페이징() {
+        repository.paging();
+    }
 }
