@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class 카드상품서비스기본QueryDslImplTest {
 
-    @Autowired private 카드상품서비스기본QueryDsl queryDsl;
     @Autowired private 카드상품서비스기본Repository repository1;
     @Autowired private 가맹점그룹서비스관계내역Repository repository2;
 
@@ -56,7 +55,7 @@ class 카드상품서비스기본QueryDslImplTest {
         repository2.save(s00012);
         repository2.save(s00013);
 
-        queryDsl.innerJoin()
+        repository1.innerJoin()
                 .stream()
                 .forEach(el -> {
                     System.out.println(el.toString());
