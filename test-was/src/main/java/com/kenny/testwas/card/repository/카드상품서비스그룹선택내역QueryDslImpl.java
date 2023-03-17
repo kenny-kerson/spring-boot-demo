@@ -1,6 +1,7 @@
 package com.kenny.testwas.card.repository;
 
 import com.kenny.testwas.card.domain.*;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -9,12 +10,22 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
 public class 카드상품서비스그룹선택내역QueryDslImpl implements 카드상품서비스그룹선택내역QueryDsl {
 
     private final JPAQueryFactory jpaQueryFactory;
+
+    @Override
+    public Optional<카드상품서비스기본> selectOne() {
+        return Optional.ofNullable(
+                jpaQueryFactory.selectFrom(Q카드상품서비스기본.카드상품서비스기본)
+                        .where(Q카드상품서비스기본.카드상품서비스기본.카드상품서비스번호.eq("S0001"))
+                        .fetchOne()
+        );
+    }
 
     public List<카드상품서비스기본> multiJoin() {
 
