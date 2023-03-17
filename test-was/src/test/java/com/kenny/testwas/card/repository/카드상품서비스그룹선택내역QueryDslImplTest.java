@@ -16,4 +16,9 @@ class 카드상품서비스그룹선택내역QueryDslImplTest {
         queryDsl.multiJoin()
                 .forEach(System.out::println);
     }
+
+    @Test
+    void 서브쿼리() {
+        queryDsl.subQuery();
+    }
 }
