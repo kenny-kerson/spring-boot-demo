@@ -18,8 +18,8 @@ public class User {
     private String name;
     private String email;
 
-    @ManyToOne()
-    @JoinColumn(name = "team_id", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "team_id")
     private Team team;
 
 //    public void setTeam(Team team) {
