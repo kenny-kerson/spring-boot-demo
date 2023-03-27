@@ -1,4 +1,4 @@
-package com.kenny.gsaccessingdatar2dbc;
+package com.kenny.gsaccessingdatar2dbc.domain;
 
 import org.springframework.data.annotation.Id;
 
