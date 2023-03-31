@@ -21,10 +21,12 @@ public class Runner implements CommandLineRunner {
     public void run(final String... args) throws Exception {
         System.out.println("Sending message...");
 
+        receiver.getLatch().await(10000, TimeUnit.MILLISECONDS );
+
         rabbitTemplate.convertAndSend(RabbitMQConfig.TOPIC_EXCHANGE_NAME
                 , "foo.bar.baz"
                 , "Hello from RabbitMQ!");
 
-        receiver.getLatch().await(10000, TimeUnit.MILLISECONDS );
+
     }
 }
