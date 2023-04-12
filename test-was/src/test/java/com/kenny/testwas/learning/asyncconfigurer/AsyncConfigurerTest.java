@@ -1,29 +1,46 @@
 package com.kenny.testwas.learning.asyncconfigurer;
 
+import com.kenny.testwas.learning.asyncconfigurer.config.AsyncConfigForAsyncConfigurer;
+import com.kenny.testwas.learning.asyncconfigurer.config.AsyncConfigForConfiguration;
+import com.kenny.testwas.learning.asyncconfigurer.task.AsyncTaskNotBean;
+import com.kenny.testwas.learning.asyncconfigurer.task.AsyncTaskSpringBean;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(
         webEnvironment = RANDOM_PORT
 )
-@ExtendWith({SpringExtension.class})
-@Import({AsyncConfig.class, TestConfig.class})
+@Import({
+        AsyncConfigForAsyncConfigurer.class,
+        AsyncConfigForConfiguration.class
+})
 public class AsyncConfigurerTest {
 
-    @Autowired AsyncTask asyncTask;
+    @Autowired AsyncTaskSpringBean asyncTaskSpringBean;
+
+    @BeforeEach
+    void setUp() {
+        System.out.println("__KENNY__ Test Method Thread Info : " + Thread.currentThread());
+    }
 
     @Test
-    void 비동기_쓰레드풀_적용되었는지_확인() {
-        System.out.println( "__KENNY__ 비동기_쓰레드풀_적용되었는지_확인() : " + Thread.currentThread() + " / " + Thread.currentThread().getId());
+    void A_스프링빈으로_등록되지않은_오브젝트의_AsyncTask를_실행시켰을때_쓰레드풀_분리안됨() {
+        final AsyncTaskNotBean asyncTaskNotBean = new AsyncTaskNotBean();
+        asyncTaskNotBean.doAsyncTask(Thread.currentThread());
+    }
 
-//        final AsyncTask asyncTask = new AsyncTask();
-        asyncTask.doAsync1();
-        asyncTask.doAsync2();
+    @Test
+    void B_스프링빈으로_등록된_오브젝트에서_AsyncConfigurer를_사용해서_비동기쓰레드풀_가져오기() {
+        asyncTaskSpringBean.doAsyncTaskForAsyncConfigurer(Thread.currentThread());
+    }
+
+    @Test
+    void C_스프링빈으로_등록된_오브젝트에서_Configuration을_사용해서_비동기쓰레드풀_가져오기() {
+        asyncTaskSpringBean.doAsyncTaskForConfiguration(Thread.currentThread());
     }
 }
