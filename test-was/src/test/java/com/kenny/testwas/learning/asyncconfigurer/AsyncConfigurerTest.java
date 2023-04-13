@@ -19,7 +19,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
         AsyncConfigForAsyncConfigurer.class,
         AsyncConfigForConfiguration.class
 })
-public class AsyncConfigurerTest {
+class AsyncConfigurerTest {
 
     @Autowired AsyncTaskSpringBean asyncTaskSpringBean;
 
