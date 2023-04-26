@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
 import java.net.URI;
 import java.util.Arrays;
 
-@ExtendWith(SpringExtension.class)
 @Slf4j
 public class ColdSequenceTest {
 
@@ -54,7 +53,7 @@ public class ColdSequenceTest {
                 .toUri();
 
         final Mono<String> mono = getWorldTime(uri);
-        mono.subscribe(dateTime -> log.info("# dateTime 1: {}", dateTime));
+        mono.subscribe(dateTime -> log.warn("# dateTime 1: {}", dateTime));
 
         try {
             Thread.sleep(2000L);
@@ -62,7 +61,7 @@ public class ColdSequenceTest {
             throw new RuntimeException(e);
         }
 
-        mono.subscribe(dateTime -> log.info("# dateTime 2: {}", dateTime));
+        mono.subscribe(dateTime -> log.warn("# dateTime 2: {}", dateTime));
 
         try {
             Thread.sleep(2000L);

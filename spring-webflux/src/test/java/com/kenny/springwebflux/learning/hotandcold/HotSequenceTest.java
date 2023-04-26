@@ -15,7 +15,6 @@ import java.net.URI;
 import java.time.Duration;
 import java.util.Arrays;
 
-@ExtendWith(SpringExtension.class)
 @Slf4j
 public class HotSequenceTest {
 
@@ -55,7 +54,7 @@ public class HotSequenceTest {
 
         final Mono<String> mono = getWorldTime(uri)
                 .cache();
-        mono.subscribe(dateTime -> log.info("# dateTime 1: {}", dateTime));
+        mono.subscribe(dateTime -> log.warn("# dateTime 1: {}", dateTime));
 
         try {
             Thread.sleep(2000L);
@@ -63,7 +62,7 @@ public class HotSequenceTest {
             throw new RuntimeException(e);
         }
 
-        mono.subscribe(dateTime -> log.info("# dateTime 2: {}", dateTime));
+        mono.subscribe(dateTime -> log.warn("# dateTime 2: {}", dateTime));
 
         try {
             Thread.sleep(2000L);
