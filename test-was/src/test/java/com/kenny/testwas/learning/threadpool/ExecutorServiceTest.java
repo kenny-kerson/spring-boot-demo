@@ -51,7 +51,7 @@ public class ExecutorServiceTest {
     private void execute(final int i) {
         executorService.execute(() -> {
             executeCount.incrementAndGet();
-            log.warn("# execute : i({}), executeCount({})", i, executeCount.get())
+            log.warn("# execute : i({}), executeCount({})", i, executeCount.get());
             try {
                 Thread.sleep(500L);
             } catch (InterruptedException e) {}
