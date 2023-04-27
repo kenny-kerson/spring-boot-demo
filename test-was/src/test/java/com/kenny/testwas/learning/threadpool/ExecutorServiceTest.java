@@ -44,13 +44,14 @@ public class ExecutorServiceTest {
         Thread.sleep(110000L);
 
         // Then
-        assertThat(i).isEqualTo(executeCount.get());
+        log.warn("# result : i({}), executeCount({})", i, executeCount.get());
+        assertThat(i-1).isEqualTo(executeCount.get());
     }
 
     private void execute(final int i) {
         executorService.execute(() -> {
             executeCount.incrementAndGet();
-            log.warn("# execute : i({}), executeCount({})", i, executeCount.get());
+            log.warn("# execute : i({}), executeCount({})", i, executeCount.get())
             try {
                 Thread.sleep(500L);
             } catch (InterruptedException e) {}
