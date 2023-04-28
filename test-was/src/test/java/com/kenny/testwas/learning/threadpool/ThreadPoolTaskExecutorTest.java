@@ -57,7 +57,7 @@ public class ThreadPoolTaskExecutorTest {
     @SneakyThrows
     void corePoolSize가_모두_차면_maxPoolSize만큼_차는지_확인() {
         log.warn("# poolSize({}), activeCount({}) START", executor.getPoolSize(), executor.getActiveCount());
-        for( int i = 0 ; i < 5; i++ ) {
+        for( int i = 0 ; i < 100; i++ ) {
             execute(executor);
         }
 
@@ -84,7 +84,7 @@ public class ThreadPoolTaskExecutorTest {
     private void execute(final ThreadPoolTaskExecutor executor) {
         executor.execute(() -> {
             try {
-                log.warn("# Something 3sec Job Execute : activeCount({})", executor.getActiveCount());
+                log.warn("# Something 3sec Job Execute : poolSize({}), activeCount({})", executor.getPoolSize(), executor.getActiveCount());
                 Thread.sleep(3000);
             } catch (InterruptedException e) {}
         });
