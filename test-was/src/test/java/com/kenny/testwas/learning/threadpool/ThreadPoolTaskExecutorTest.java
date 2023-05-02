@@ -44,7 +44,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void 쓰레드풀을_만들고_초기요청이_없으면_corePoolSize_만큼_poolSize가_만들어지지_않는것_확인() {
+    void T1_쓰레드풀을_만들고_초기요청이_없으면_corePoolSize_만큼_poolSize가_만들어지지_않는것_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -64,7 +64,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void 초기요청이_있으면_corePoolSize만큼_생성되는지_확인() {
+    void T2_초기요청이_있으면_corePoolSize만큼_생성되는지_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -89,7 +89,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void allowCoreThreadTimeOut을_true로하고_keepAliveSeconds가_10초일때_corePoolSize가_줄어드는지_확인() {
+    void T3_allowCoreThreadTimeOut을_true로하고_keepAliveSeconds가_10초일때_corePoolSize가_줄어드는지_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -114,7 +114,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void allowCoreThreadTimeOut을_false로_했을때_keepAliveSeconds가_동작안하는지_확인() {
+    void T4_allowCoreThreadTimeOut을_false로_했을때_keepAliveSeconds가_동작안하는지_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -139,7 +139,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void corePoolSize가_모두_차더라도_maxPoolSize만큼_확장되지_않는것_확인() {
+    void T5_corePoolSize가_모두_차더라도_maxPoolSize만큼_확장되지_않는것_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -164,7 +164,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void corePoolSize가_모두_차고_Queue까지_모두_찼을때_maxPoolSize까지_확장되는지_확인() {
+    void T6_corePoolSize가_모두_차고_Queue까지_모두_찼을때_maxPoolSize까지_확장되는지_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -191,7 +191,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void corePooliSize가_모두_차고_maxPoolSize까지_확장된뒤_keepAlive에의해_corePoolSize가_원복되는것_확인() {
+    void T7_corePooliSize가_모두_차고_maxPoolSize까지_확장된뒤_keepAlive에의해_corePoolSize가_원복되는것_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -216,7 +216,7 @@ public class ThreadPoolTaskExecutorTest {
 
     @Test
     @SneakyThrows
-    void queue에_들어간_작업들까지_유실없이_모두_처리되는지_확인() {
+    void T8_queue에_들어간_작업들까지_유실없이_모두_처리되는지_확인() {
         // given
         corePoolSize = 5;
         maxPoolSize = 100;
@@ -245,8 +245,7 @@ public class ThreadPoolTaskExecutorTest {
         assertThat(requestCount).isEqualTo(count.get());
     }
 
-
-
+    // 쓰레드풀 생성 메서드
     private void generateThreadPool() {
         executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(corePoolSize);
@@ -258,6 +257,7 @@ public class ThreadPoolTaskExecutorTest {
         executor.initialize();
     }
 
+    // execute() 실행 메서드
     private void execute(final ThreadPoolTaskExecutor executor, final int jobNumber) {
         executor.execute(() -> {
             try {

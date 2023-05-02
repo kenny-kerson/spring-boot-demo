@@ -27,5 +27,5 @@ server:
 
 logging:
   level:
-    root: DEBUG
+    root: WARN
     com.kenny.testwas: DEBUG
