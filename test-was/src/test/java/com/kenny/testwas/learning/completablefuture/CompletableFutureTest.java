@@ -13,14 +13,15 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest
 @Import({CompletableFutureConfig.class})
 @Slf4j
 public class CompletableFutureTest {
 
-    // Reference : https://howtodoinjava.com/spring-boot2/testing/test-async-controller-mockmvc/
+    // Reference : Unit Testing Spring Async Rest Controller with MockMvc - https://howtodoinjava.com/spring-boot2/testing/test-async-controller-mockmvc/
     @Autowired MockMvc mockMvc;
 
     @Test
