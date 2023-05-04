@@ -13,8 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
 @Slf4j
@@ -26,7 +25,28 @@ public class CompletableFutureTest {
     @Test
     @SneakyThrows
     void 서버는_비동기방식으로_리턴하되_Client는_동기방식으로_리턴받는지_확인() {
-        MvcResult mvcResult = mockMvc.perform(get("/user/kenny"))
+        MvcResult mvcResult = mockMvc.perform(get("/user/kenny/2000/ok"))
+                .andExpect(request().asyncStarted())
+                .andDo(MockMvcResultHandlers.log())
+                .andReturn()
+        ;
+
+        mockMvc.perform(asyncDispatch(mvcResult))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$..['id']").value("kenny"))
+                .andDo(print())
+        ;
+    }
+
+    @Test
+    void async메서드_사용시_별도의_쓰레드풀을_사용하는지_확인() {
+
+    }
+
+    @Test
+    @SneakyThrows
+    void onTimeout의_타임아웃_동작방식_확인() {
+        MvcResult mvcResult = mockMvc.perform(get("/user/kenny/4000/ok"))
                 .andExpect(request().asyncStarted())
                 .andDo(MockMvcResultHandlers.log())
                 .andReturn()
@@ -37,4 +57,6 @@ public class CompletableFutureTest {
                 .andDo(print())
         ;
     }
+
+
 }
