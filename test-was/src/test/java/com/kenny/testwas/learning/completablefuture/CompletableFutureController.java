@@ -2,6 +2,8 @@ package com.kenny.testwas.learning.completablefuture;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +24,9 @@ import java.util.stream.Stream;
 public class CompletableFutureController {
 
     private final ExternalApiClient externalApiClient = new ExternalApiClient();
-    private final Executor executor;
-
-    public CompletableFutureController(final Executor executor) {
-        this.executor = executor;
-    }
+    @Qualifier("completableFutureExecutor")
+    @Autowired
+    private Executor executor;
 
     // Guide To CompletableFuture( Baeldung ) : https://www.baeldung.com/java-completablefuture
     @GetMapping("/user/{id}/{time}/{status}")
@@ -53,15 +53,15 @@ public class CompletableFutureController {
                         , (f1, f2) -> f2
                         , executor
                 )
-                .orTimeout(3000L, TimeUnit.MILLISECONDS)
-                .completeOnTimeout(new User("timeout", "timeout"), 5000L, TimeUnit.MILLISECONDS)
+                .orTimeout(5000L, TimeUnit.MILLISECONDS)
+                .completeOnTimeout(new User("timeout", "timeout"), 10000L, TimeUnit.MILLISECONDS)
                 .exceptionally(e -> new User("error", "error"))
 //                .completeExceptionally( new RuntimeException("CF가 완료되기전에 호출했음!!!"))
         ;
 
-        // 여기서도 특정작업이 4초가 걸린다고 가정한다.
+        // 여기서도 특정작업이 2초가 걸린다고 가정한다.
         try {
-            Thread.sleep(4000L);
+            Thread.sleep(2000L);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
