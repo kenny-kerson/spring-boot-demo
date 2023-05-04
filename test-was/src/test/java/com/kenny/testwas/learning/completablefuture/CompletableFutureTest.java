@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Slf4j
 public class CompletableFutureTest {
 
-    // Reference : Unit Testing Spring Async Rest Controller with MockMvc - https://howtodoinjava.com/spring-boot2/testing/test-async-controller-mockmvc/
+    // Unit Testing Spring Async Rest Controller with MockMvc - https://howtodoinjava.com/spring-boot2/testing/test-async-controller-mockmvc/
     @Autowired MockMvc mockMvc;
 
     @Test
