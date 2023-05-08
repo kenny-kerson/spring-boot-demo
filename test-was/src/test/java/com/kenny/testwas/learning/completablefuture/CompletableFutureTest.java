@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest
+// Import 하지 않으면, Test코드의 @Configuration은 동작하지 않는다.
 @Import({CompletableFutureConfig.class})
 @Slf4j
 public class CompletableFutureTest {
@@ -26,7 +27,7 @@ public class CompletableFutureTest {
     @Test
     @SneakyThrows
     void 서버는_비동기방식으로_리턴하되_Client는_동기방식으로_리턴받는지_확인() {
-        MvcResult mvcResult = mockMvc.perform(get("/user/kenny/1000/ok"))
+        MvcResult mvcResult = mockMvc.perform(get("/user/kenny/1000/ok/orTimeout"))
                 .andExpect(request().asyncStarted())
                 .andDo(MockMvcResultHandlers.log())
                 .andReturn()
