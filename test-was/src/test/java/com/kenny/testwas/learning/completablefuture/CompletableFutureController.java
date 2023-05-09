@@ -3,13 +3,13 @@ package com.kenny.testwas.learning.completablefuture;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
@@ -19,6 +19,7 @@ import java.util.stream.Stream;
 public class CompletableFutureController {
 
     private final ExternalApiClient externalApiClient = new ExternalApiClient();
+
     @Qualifier("completableFutureExecutor")
     @Autowired
     private Executor executor;
@@ -32,8 +33,14 @@ public class CompletableFutureController {
     ) {
         log.warn("# getUserWithJoin({}) START!!", id);
 
-        final CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> proccessInternalTask(id));
-        final CompletableFuture<User> future2 = CompletableFuture.supplyAsync(() -> externalApiClient.getUserInfo(id, time, status));
+        final CompletableFuture<String> future1 = CompletableFuture.supplyAsync(
+                () -> proccessInternalTask(id),
+                executor
+        );
+        final CompletableFuture<User> future2 = CompletableFuture.supplyAsync(
+                () -> externalApiClient.getUserInfo(id, time, status),
+                executor
+        );
 
         final List<?> list = Stream.of(future1, future2)
                 .map(CompletableFuture::join)
@@ -55,10 +62,18 @@ public class CompletableFutureController {
     ) {
         log.warn("# getUser({}) START!!", id);
 
-        final CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> proccessInternalTask(id), executor);
-        final CompletableFuture<User> future2 = CompletableFuture.supplyAsync(() -> externalApiClient.getUserInfo(id, time, status), executor);
+        final CompletableFuture<String> future1 = CompletableFuture.supplyAsync(
+                () -> proccessInternalTask(id),
+                executor
+        );
+        final CompletableFuture<User> future2 = CompletableFuture.supplyAsync(
+                () -> externalApiClient.getUserInfo(id, time, status),
+                executor
+        );
+
         final CompletableFuture<User> combineFuture = switch (with) {
-                case "orTimeout" -> getUserCompletableFutureWithOrTimeout(future1, future2);
+                case "orTimeout_normal_return" -> getUserCompletableFutureWithOrTimeoutNormalReturn(future1, future2);
+                case "orTimeout_error_return" -> getUserCompletableFutureWithOrTimeoutErrorReturn(future1, future2);
                 case "completeOnTimeout" -> getUserCompletableFutureWithCompleteOnTimeout(future1, future2);
                 case "completeExceptionally" -> getUserCompletableFutureWithCompleteExceptionally(future1, future2);
                 default -> throw new RuntimeException("정의되지 않은 케이스");
@@ -74,10 +89,8 @@ public class CompletableFutureController {
         return combineFuture;
     }
 
-    // orTimeout() 확인용 메서드
-    private CompletableFuture<User> getUserCompletableFutureWithOrTimeout(final CompletableFuture<String> future1, final CompletableFuture<User> future2) {
-        // TODO : 예외처리를 어떻게 할 수 있는지 확인필요
-        // TODO : 타임아웃처리 어떻게 할 수 있는지 확인필요
+    // orTimeout() 확인용 메서드 : 예외리턴
+    private CompletableFuture<User> getUserCompletableFutureWithOrTimeoutErrorReturn(final CompletableFuture<String> future1, final CompletableFuture<User> future2) {
         // 예외
         //      completeExceptionally() : 완료되지 않은 상태에서, get() 및 관련메서드 호출시, 지정된 예외 발생
         //      exceptionally() : 예외발생하면, 전달한 콜백을 실행시킴
@@ -85,8 +98,29 @@ public class CompletableFutureController {
         //      orTimeout() : 주어진 시간안에 완료되지 않으면, TimeoutException을 쓰로우함.
         //      complelteOnTimeout() : 주어진 시간안에 완료되지 않으면, 주어진 값으로 CF를 완료함.
 
-        final CompletableFuture<User> combineFuture = future1
-                .thenCombineAsync(future2
+        final CompletableFuture<User> combineFuture = future1.thenCombineAsync( future2
+                        , (f1, f2) -> {
+                            log.warn("# thenCombineAsync!!");
+                            return f2;
+                        }
+                        , executor
+                )
+                .orTimeout(5000L, TimeUnit.MILLISECONDS)
+        ;
+
+        return combineFuture;
+    }
+
+    // orTimeout() 확인용 메서드 : 정상리턴
+    private CompletableFuture<User> getUserCompletableFutureWithOrTimeoutNormalReturn(final CompletableFuture<String> future1, final CompletableFuture<User> future2) {
+        // 예외
+        //      completeExceptionally() : 완료되지 않은 상태에서, get() 및 관련메서드 호출시, 지정된 예외 발생
+        //      exceptionally() : 예외발생하면, 전달한 콜백을 실행시킴
+        // 타임아웃
+        //      orTimeout() : 주어진 시간안에 완료되지 않으면, TimeoutException을 쓰로우함.
+        //      complelteOnTimeout() : 주어진 시간안에 완료되지 않으면, 주어진 값으로 CF를 완료함.
+
+        final CompletableFuture<User> combineFuture = future1.thenCombineAsync( future2
                         , (f1, f2) -> {
                                 log.warn("# thenCombineAsync!!");
                                 return f2;
@@ -113,8 +147,7 @@ public class CompletableFutureController {
         // 타임아웃
         //      orTimeout() : 주어진 시간안에 완료되지 않으면, TimeoutException을 쓰로우함.
         //      complelteOnTimeout() : 주어진 시간안에 완료되지 않으면, 주어진 값으로 CF를 완료함.
-        final CompletableFuture<User> combineFuture = future1
-                .thenCombineAsync(future2
+        final CompletableFuture<User> combineFuture = future1.thenCombineAsync( future2
                         , (f1, f2) -> f2
                         , executor
                 )
@@ -138,19 +171,24 @@ public class CompletableFutureController {
         // 타임아웃
         //      orTimeout() : 주어진 시간안에 완료되지 않으면, TimeoutException을 쓰로우함.
         //      complelteOnTimeout() : 주어진 시간안에 완료되지 않으면, 주어진 값으로 CF를 완료함.
-        final CompletableFuture<User> combineFuture = future1
-                .thenCombineAsync(future2
+        final CompletableFuture<User> combineFuture = future1.thenCombineAsync( future2
                         , (f1, f2) -> f2
                         , executor
                 )
                 .orTimeout(5000L, TimeUnit.MILLISECONDS)
-                .completeOnTimeout(new User("timeout", "timeout"), 10000L, TimeUnit.MILLISECONDS)
                 .exceptionally(e -> {
                     log.warn( "# Error : ", e);
                     return new User("error", "error");
                 })
-//                .completeExceptionally( new RuntimeException("CF가 완료되기전에 호출했음!!!"))
-                ;
+        ;
+
+        combineFuture.completeExceptionally(new RuntimeException("CF가 완료되지 않은 상황에서 get() 관련 메서드가 호출됨!!"));
+        try {
+            combineFuture.get();
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
         return combineFuture;
     }
 
