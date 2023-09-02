@@ -4,6 +4,8 @@
     <persistence-unit name="Hello">
 
         <class>com.kenny.jpabasic.Member</class>
+        <class>com.kenny.springbootdemo.springdatajpa.domain.MemberHistory</class>
+        <class>com.kenny.springbootdemo.springdatajpa.domain.MemberHistoryPK</class>
 
         <properties>
             <!-- 필수 속성 -->

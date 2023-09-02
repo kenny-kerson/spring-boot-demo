@@ -21,4 +21,9 @@ public class MemberController {
     public void inquiryMember() {
         memberService.inquiryMember();
     }
+
+    @PostMapping("/member_history")
+    public void saveMemberHistory() {
+        memberService.saveMemberHistory();
+    }
 }
