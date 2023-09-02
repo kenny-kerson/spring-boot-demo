@@ -1,21 +1,42 @@
 spring:
+  # -------------------
+  # - h2 설정
+  # -------------------
   h2:
     console:
       enabled: true
       path: /h2-console
 
   datasource:
-    url: jdbc:h2:mem:test # test ??? ??? ??? ??? ???? ???. 
-    username: sa # username? password? ??? ??? ??
-    password:
-    driver-class-name: org.h2.Driver
-
+    # -------------------
+    # - h2 설정
+    # -------------------
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+    # -------------------
+    # - postgres 설정
+    # -------------------
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create # ??????? ??? ? ??????? ????? ?? ??? ??
+      ddl-auto: create-drop
     properties:
       hibernate:
-        format_sql: true # ???? query? ???
+        format_sql: true
+    show-sql: true
+
+#  sql:
+#    init:
+#      # schema.sql로 DDL을 실행하기 위한 옵션
+#      # ddl-auto와 동시에 설정되어 있을때는, ddl-auto가 적용된다
+#      mode: always
 
 logging.level:
-  org.hibernate.SQL: debug
+  com.kenny.springbootdemo.springdatajpa: DEBUG
+  org.hibernate.type: TRACE
+#  org.hibernate.SQL: DEBUG
