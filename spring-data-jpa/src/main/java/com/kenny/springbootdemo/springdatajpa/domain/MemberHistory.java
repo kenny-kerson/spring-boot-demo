@@ -20,7 +20,7 @@ public class MemberHistory {
     @Id
     private String memberId;
     @Id
-    @SequenceGenerator(name = "sq_member_history_01", sequenceName = "sq_member_history_01", allocationSize = 1)
+    @SequenceGenerator(name = SEQUENCE_NAME, sequenceName = SEQUENCE_NAME, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
     private Long memberSequence;
     private String contents;
